@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>icons/10-View-File.png</file>
+        <file>icons/29-Support.png</file>
+        <file>icons/71-Picture.png</file>
+        <file>icons/124-Folder.png</file>
+    </qresource>
+    <qresource prefix="/new/prefix2">
+        <file>resource/timg.jpg</file>
+    </qresource>
+</RCC>
