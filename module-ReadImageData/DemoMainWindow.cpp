@@ -10,25 +10,33 @@ DemoMainWindow::DemoMainWindow(QWidget *parent) :
     // setting the dock widget
     this->m_InputOption     = new module_dataInput(ui->dock_InputOption);
     this->m_loadingStatus   = new module_loadingStatus(ui->dock_Loading);
-    this->m_TaskInformation = new module_TaskInformation(ui->dock_TaskInformation);
+    this->m_TaskInformation = new module_TaskInformation();
+
+    // initialization
+    QVec_TaskInformation.resize(1);
+    QVec_TaskInformation[0] = this->m_TaskInformation;
+    this->order_Task = 0;
+
+    // initialization - setting the thread
+    work_loadData = new LoadData;
+    work_loadData->moveToThread(LoadData_Thread);
 
     ui->dock_InputOption->setWidget(m_InputOption);
     ui->dock_Loading->setWidget(m_loadingStatus);
-    ui->dock_TaskInformation->setWidget(m_TaskInformation);
+    action_InputOption   = ui->dock_InputOption->toggleViewAction();
+    action_loadingStatus = ui->dock_Loading->toggleViewAction();
 
-    action_InputOption     = ui->dock_InputOption->toggleViewAction();
-    action_loadingStatus   = ui->dock_Loading->toggleViewAction();
-    action_TaskInformation = ui->dock_TaskInformation->toggleViewAction();
+    // menu button
     ui->menu_window->addAction(action_InputOption);
     action_InputOption->setText("InputOption");
     ui->menu_window->addAction(action_loadingStatus);
     action_loadingStatus->setText("LoadingStatus");
-    ui->menu_window->addAction(action_TaskInformation);
-    action_TaskInformation->setText("TaskInformation");
 
     // boot animation
     boot_animation = new QImage("timg.jpg");
 
+    // connect
+    connect(this->m_InputOption, SIGNAL(module_dataInput::add_Task(QStringList)), this, SLOT(from_datainput_add(QStringList)));
 }
 
 DemoMainWindow::~DemoMainWindow()
@@ -36,16 +44,12 @@ DemoMainWindow::~DemoMainWindow()
     delete ui;
 }
 
-// function implementation
-//void DemoMainWindow::paintEvent(QPaintEvent *event)
-//{
-//    QPainter painter;
-//    painter.begin(ui->openGLWidget);
-//    painter.setRenderHint(QPainter::Antialiasing);
-//    painter.drawImage(event->rect(), *this->boot_animation, QRectF(0.0, 0.0, 640.0, 512.0));
-//    painter.drawText(100,100,"helloworld");
-////    paint(&painter, event, elapsed);
-//    painter.end();
-//}
+// SLOT:
+void DemoMainWindow::from_datainput_add()
+{
+    this->order_Task++;
+    // start the loading-thread to load all the image
+
+}
 
 

@@ -12,3 +12,4 @@ module_TaskInformation::~module_TaskInformation()
 {
     delete ui;
 }
+

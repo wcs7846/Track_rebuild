@@ -22,6 +22,8 @@ private:
 private slots:
     void load_image(void);
     void load_fold(void);
+signals:
+    void add_Task(QStringList fn);
 };
 
 #endif // MODULE_DATAINPUT_H

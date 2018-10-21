@@ -48,3 +48,18 @@ RESOURCES += \
     resource.qrc
 
 LIBS += -lopengl32
+
+#-------------------------------------------------
+# OpenCV Files
+#-------------------------------------------------
+INCLUDEPATH += E:\opencv\opencv-3.3.0\include
+
+CONFIG(debug,debug|release){
+    LIBS += -L$$(OPENCV3.3.0_DLL_DIR)\Debug \
+            -lopencv_world330d
+}
+
+CONFIG(release,debug|release){
+    LIBS += -L$$(OPENCV3.3.0_DLL_DIR)\Release \
+            -lopencv_world330
+}

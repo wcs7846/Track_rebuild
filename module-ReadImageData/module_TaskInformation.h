@@ -15,8 +15,10 @@ public:
     explicit module_TaskInformation(QWidget *parent = 0);
     ~module_TaskInformation();
 
+
 private:
     Ui::module_TaskInformation *ui;
+
 };
 
 #endif // MODULE_PREVIEW_H
