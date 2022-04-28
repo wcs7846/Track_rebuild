@@ -6,6 +6,7 @@
 #include <QPainter>
 #include <QImage>
 #include <QVector>
+#include <QThread>
 // Qt OpenGL
 #include <customglwidget.h>
 // module UI page
@@ -19,6 +20,23 @@
 namespace Ui {
 class DemoMainWindow;
 }
+
+// Load Thread: used to load the image data
+class LoadData : public QObject
+{
+    Q_OBJECT
+    QThread LoadData_Thread;
+
+public slots:
+    void Load_sequence(const QStringList fn){
+        // load all the file in the list
+        //
+        emit loadfinished();
+    }
+
+signals:
+    void loadfinished();
+};
 
 class DemoMainWindow : public QMainWindow
 {
@@ -55,25 +73,8 @@ private:
 
     LoadData* work_loadData;
 private slots:
-    void from_datainput_add(QStringList);
+//    void from_datainput_add(QStringList);
 
-};
-
-// Load Thread: used to load the image data
-class LoadData : public QObject
-{
-    Q_OBJECT
-    QThread LoadData_Thread;
-
-public slots:
-    void Load_sequence(const QStringList fn){
-        // load all the file in the list
-        //
-        emit loadfinished();
-    }
-
-signals:
-    void loadfinished();
 };
 
 #endif // MAINWINDOW_H

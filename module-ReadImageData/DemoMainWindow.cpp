@@ -19,7 +19,7 @@ DemoMainWindow::DemoMainWindow(QWidget *parent) :
 
     // initialization - setting the thread
     work_loadData = new LoadData;
-    work_loadData->moveToThread(LoadData_Thread);
+//    work_loadData->moveToThread(LoadData_Thread);
 
     ui->dock_InputOption->setWidget(m_InputOption);
     ui->dock_Loading->setWidget(m_loadingStatus);
@@ -45,11 +45,11 @@ DemoMainWindow::~DemoMainWindow()
 }
 
 // SLOT:
-void DemoMainWindow::from_datainput_add()
-{
-    this->order_Task++;
-    // start the loading-thread to load all the image
+//void DemoMainWindow::from_datainput_add()
+//{
+//    this->order_Task++;
+//    // start the loading-thread to load all the image
 
-}
+//}
 
 

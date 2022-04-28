@@ -16,12 +16,12 @@ ApplicationWindow {
         Page1Form {
             id: page
 
-            mouseArea_rr:  {
-                onClicked: stateGroup.state = 'State1'
-            }
-            mouseArea_rb: {
-                onClicked: stateGroup.state = 'State2'
-            }
+//            mouseArea_rr:  {
+//                onClicked: stateGroup.state = 'State1'
+//            }
+//            mouseArea_rb: {
+//                onClicked: stateGroup.state = 'State2'
+//            }
         }
 
         Page2Form {
